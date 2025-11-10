@@ -5,8 +5,7 @@
     {id:'peinados',nombre:'Peinados',desc:'Peinados para eventos, brushing y más.',img:'https://images.unsplash.com/photo-1487412912498-0447578fcca8?q=80&w=1400&auto=format&fit=crop'},
     {id:'cortes',nombre:'Cortes',desc:'Cortes clásicos y modernos para todas las edades.',img:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1400&auto=format&fit=crop'},
     {id:'lavado',nombre:'Lavado',desc:'Lavado + masaje capilar con productos premium.',img:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1400&auto=format&fit=crop'},
-    {id:'coloracion',nombre:'Coloración',desc:'Técnicas de color, reflejos y cobertura.',img:'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop'},
-    {id:'tratamientos',nombre:'Tratamientos',desc:'Nutrición, hidratación y keratina.',img:'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop'}
+    {id:'coloracion',nombre:'Coloración',desc:'Técnicas de color, reflejos y cobertura.',img:'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop'}
   ];
   function block({nombre,desc,img,id},reverse){
     return `<div class="row service-block gy-3 ${reverse?'flex-lg-row-reverse':''}">
