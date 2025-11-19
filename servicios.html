@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Servicios · Trapani Salón</title>
+  <meta name="description" content="Servicios de Trapani Salón: cortes, color, peinados, barbería y más." />
+  <link href="assets/bootstrap.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/styles.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="page-servicios">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <span class="logo-wrapper d-inline-flex align-items-center justify-content-center rounded-circle" style="width:50px;height:50px;overflow:hidden;">
+          <img src="assets/img/logo.jpg" alt="Logo Trapani" class="logo-img">
+        </span>
+        <b>Trapani Salón</b>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="servicios.html">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="historia.html">Historia</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SERVICIOS -->
+  <section class="hero py-5 fade-section">
+    <div class="container py-4">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-8">
+          <h1 class="display-5 fw-semibold mb-3">Servicios en Trapani Salón</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN SERVICIOS (rellenada por app.js) -->
+  <section class="py-5 fade-section" id="servicios">
+    <div class="container">
+      <div id="serviciosAlt" class="vstack gap-5">
+        <!-- Se completa dinámicamente desde app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- LINK A POLÍTICA DE RESERVA -->
+  <section class="py-4 border-top fade-section">
+    <div class="container text-center">
+      <a href="politica-reserva.html" class="btn btn-outline-light btn-sm">
+        Ver política de reserva
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <div class="small">© <span id="y"></span> Trapani Salón.</div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a
+    class="btn rounded-circle whatsapp-float shadow"
+    aria-label="Abrir WhatsApp"
+    href="https://wa.me/5493416151122"
+    target="_blank"
+    rel="noopener"
+  >
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <script src="assets/bootstrap.js"></script>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

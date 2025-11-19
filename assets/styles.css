@@ -1,76 +1,418 @@
-/* Trapani Salón — Tema negro + dorado opaco */
+/* Trapani Salón — Tema negro + dorado opaco (revisado 2025-11) */
 :root{
   --brand:#000000;          /* Negro base */
-  --brand-acc:#bfa46f;      /* Dorado opaco */
-  --text-light:#f5f5f5;
-  --text-muted:#d1c7a3;
+  --brand-acc:#bfa46f;      /* Dorado opaco principal (logo) */
+
+  /* Textos: todos en gama dorada */
+  --text-main:#d9c796;      /* Dorado claro para textos largos */
+  --text-alt:#bfa46f;       /* Dorado logo para títulos / acentos */
+  --text-muted:#9b8a60;     /* Dorado apagado para textos secundarios */
+
+  /* Compatibilidad con nombres viejos */
+  --text-light:var(--text-main);
 }
 
+/* Fuente general */
 body{
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial;
+  font-family:'Maven Pro',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial;
   background-color:var(--brand);
-  color:var(--text-light);
+  color:var(--text-main);
 }
 
-/* Navbar */
+/* ================= NAVBAR ================= */
+
 .navbar{
   background-color:var(--brand);
   border-bottom:1px solid var(--brand-acc);
 }
-.navbar .navbar-brand{ color:var(--text-light); }
-.navbar .nav-link{ color:var(--text-light); transition:color .3s ease; }
-.navbar .nav-link:hover{ color:var(--brand-acc); }
 
-/* Botones */
-.btn-brand{ background:var(--brand-acc); color:var(--brand); border:none; }
-.btn-brand:hover{ filter:brightness(1.1); color:var(--brand); }
-.btn-outline-light{ border:1px solid var(--brand-acc); color:var(--brand-acc); }
-.btn-outline-light:hover{ background-color:var(--brand-acc); color:var(--brand); }
+/* Marca + links del menú en dorado */
+.navbar .navbar-brand{
+  color:var(--text-alt);
+}
+.navbar .navbar-brand b{
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  font-weight:600;
+}
 
-/* Hero */
+.navbar .nav-link{
+  color:var(--text-main);
+  transition:color .25s ease;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  font-size:0.85rem;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:focus{
+  color:var(--text-alt);
+}
+
+/* Toggler en dorado (líneas del menú móvil) */
+.navbar-dark .navbar-toggler{
+  border-color:var(--brand-acc);
+}
+.navbar-dark .navbar-toggler-icon{
+  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(191,164,111,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ================= BOTONES ================= */
+
+.btn{
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  font-size:0.85rem;
+  border-radius:999px;
+}
+
+/* Principal: fondo dorado, texto negro */
+.btn-brand{
+  background:var(--brand-acc);
+  color:var(--brand);
+  border:none;
+}
+.btn-brand:hover,
+.btn-brand:focus{
+  background:var(--brand-acc);
+  filter:brightness(1.08);
+  color:var(--brand);      /* NO se pierde el texto */
+}
+
+/* Secundario: contorno dorado, transparente sobre negro */
+.btn-outline-light{
+  border:1px solid var(--brand-acc);
+  color:var(--brand-acc);
+  background-color:transparent;
+}
+.btn-outline-light:hover,
+.btn-outline-light:focus{
+  background-color:var(--brand-acc);
+  color:var(--brand);      /* Siempre legible sobre fondo negro */
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp-float{
+  position:fixed;
+  right:1rem;
+  bottom:1rem;
+  z-index:1030;
+  background-color:var(--brand-acc);
+  border:none;
+  width:3rem;
+  height:3rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.whatsapp-float i{
+  color:var(--brand);
+  font-size:1.5rem;
+}
+
+/* ================= HERO ================= */
+
 .hero{
-  background:linear-gradient(to right,rgba(0,0,0,.8),rgba(0,0,0,.5)),
-             url('https://images.unsplash.com/photo-1513908957990-b2790723edbf?q=80&w=1600&auto=format&fit=crop');
+  background:
+    linear-gradient(to right,rgba(0,0,0,.9),rgba(0,0,0,.7)),
+    url('https://images.unsplash.com/photo-1513908957990-b2790723edbf?q=80&w=1600&auto=format&fit=crop');
   background-size:cover;
   background-position:center;
-  color:var(--text-light);
+  color:var(--text-main);
 }
 
-/* Secciones */
-#servicios,#sobre,#contacto{
-  background-color:#111;
-  color:var(--text-light);
+.hero h1{
+  color:var(--text-alt);
 }
 
-/* Imágenes y bloques */
-.service-block img{ aspect-ratio:16/10; object-fit:cover; border:2px solid var(--brand-acc); }
-.service-block .btn{ white-space:nowrap; }
-#sobre img{ border:2px solid var(--brand-acc); }
+.hero .lead{
+  color:var(--text-main);
+  max-width:32rem;
+}
 
-/* Contacto */
-#contacto a{ color:var(--text-light); }
-#contacto a:hover{
-  color:var(--brand-acc);
-  transform:scale(1.05);
+/* ================= SECCIONES ================= */
+
+#servicios,
+#sobre,
+#contacto{
+  background-color:#050505;   /* Negro profundo */
+  color:var(--text-main);
+}
+
+/* Títulos de secciones en dorado logo */
+#servicios h2,
+#sobre h2,
+#contacto h2{
+  color:var(--text-alt);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+}
+
+/* ================= SERVICIOS ================= */
+
+.service-block img{
+  aspect-ratio:16/10;
+  object-fit:cover;
+  border:2px solid var(--brand-acc);
+}
+.service-block .btn{
+  white-space:nowrap;
+}
+
+/* ================= SOBRE ================= */
+
+#sobre img{
+  border:2px solid var(--brand-acc);
+}
+
+/* ================= CONTACTO ================= */
+
+/* Links y textos en gama dorada */
+#contacto a{
+  color:var(--text-main);
   transition:transform .2s ease,color .3s ease;
 }
+#contacto a:hover{
+  color:var(--text-alt);
+  transform:scale(1.05);
+}
 
-/* Footer */
+/* Íconos un poco más dorados para destacarse */
+#contacto i{
+  color:var(--text-alt);
+}
+
+/* ================= FOOTER ================= */
+
 .footer{
   background-color:var(--brand);
   border-top:1px solid var(--brand-acc);
   color:var(--text-muted);
 }
 
-/* Logo */
-.logo-wrapper{ background-color:transparent!important; border:2px solid var(--brand-acc); }
+/* ================= LOGO ================= */
+
+.logo-wrapper{
+  background-color:transparent!important;
+  border:2px solid var(--brand-acc);
+}
 .logo-wrapper img.logo-img{
-  width:100%; height:100%; object-fit:contain; object-position:center; display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  display:block;
 }
 
-/* WhatsApp FAB */
-.whatsapp-float{
-  position:fixed; right:1rem; bottom:1rem; z-index:1030;
-  background-color:var(--brand-acc); border:none;
+/* =========================
+   TIMELINE HISTORIA
+   ========================= */
+
+.timeline-section {
+  background-color: #050505;
 }
-.whatsapp-float i{ color:var(--brand); }
+
+/* Contenedor de la línea de tiempo */
+.timeline-wrapper {
+  position: relative;
+  padding-left: 2.5rem;
+
+  /* Estado inicial (oculto) */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Estado visible (cuando JS agrega la clase) */
+.timeline-wrapper.timeline-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Línea vertical a la izquierda */
+.timeline-wrapper::before {
+  content: "";
+  position: absolute;
+  left: 0.8rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(191, 164, 111, 0.2),
+    rgba(191, 164, 111, 0.9)
+  );
+}
+
+/* Cada hito */
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+
+  /* Estado inicial (oculto) */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Hito visible (cuando JS agrega la clase) */
+.timeline-item.timeline-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Circulito sobre la línea */
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 2px solid var(--brand-acc);
+  background-color: #050505;
+  box-shadow: 0 0 0 4px rgba(191, 164, 111, 0.15);
+}
+
+/* Contenido del hito */
+.timeline-content {
+  margin-left: 2.2rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--borde-suave);
+  background: radial-gradient(circle at top left, rgba(191, 164, 111, 0.08), #050505);
+}
+
+.timeline-content h3 {
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.timeline-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--texto-secundario);
+}
+
+.timeline-content p {
+  margin-bottom: 0.75rem;
+}
+
+.timeline-image {
+  border-radius: 0.9rem;
+  border: 1px solid var(--borde-suave);
+  object-fit: cover;
+}
+
+/* Último hito: un poco más de espacio abajo en mobile */
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 575.98px) {
+  .timeline-wrapper {
+    padding-left: 2rem;
+  }
+  .timeline-wrapper::before {
+    left: 0.7rem;
+  }
+  .timeline-marker {
+    left: -0.05rem;
+  }
+  .timeline-content {
+    margin-left: 1.9rem;
+    padding: 1rem 1.1rem;
+  }
+}
+
+/* ================= ANIMACIONES DE ENTRADA POR PÁGINA ================= */
+
+body.page-index,
+body.page-servicios,
+body.page-historia,
+body.page-politica {
+  opacity: 0;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+/* Index: aparece desde abajo */
+body.page-index {
+  animation-name: pageFadeUp;
+}
+
+/* Servicios: aparece desde la derecha */
+body.page-servicios {
+  animation-name: pageFadeRight;
+}
+
+/* Historia: subida suave (para acompañar la timeline) */
+body.page-historia {
+  animation-name: pageFadeUpSoft;
+}
+
+/* Política de reserva: pequeño zoom-in */
+body.page-politica {
+  animation-name: pageFadeZoom;
+}
+
+@keyframes pageFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageFadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pageFadeUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageFadeZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================= ANIMACIONES SUAVES POR SECCIÓN ================= */
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
