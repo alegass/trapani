@@ -416,3 +416,14 @@ body.page-politica {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Ajuste color reseñas Google */
+#google-review-count {
+  color: #bfa46f;            /* dorado opaco de la marca */
+}
+
+/* Si querés que el promedio también quede bien dorado: */
+#google-rating,
+#google-rating-stars {
+  color: #bfa46f;
+}
